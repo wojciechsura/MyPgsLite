@@ -8,12 +8,12 @@ namespace MyPgsLite.Services
 {
     public class UserManager
     {
-        internal void ListUsers()
+        public void ListUsers()
         {
             Console.WriteLine("List users");
         }
 
-        internal void AddUser()
+        public void AddUser()
         {
             Console.WriteLine("Add user");
         }
