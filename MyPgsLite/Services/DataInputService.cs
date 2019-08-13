@@ -51,5 +51,27 @@ namespace MyPgsLite.Services
 
             return result;
         }
+
+        public int GetInt(string message)
+        {
+            Console.WriteLine(message);
+
+            string input;
+            int result;
+            bool valid;
+            do
+            {
+                input = Console.ReadLine();
+                valid = int.TryParse(input, out result);
+
+                if (!valid)
+                {
+                    Console.WriteLine("Nieprawidłowy ciąg, wpisz ponownie.");
+                }
+            }
+            while (!valid);
+
+            return result;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MyPgsLite.Services;
+using MyPgsLite.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,11 @@ namespace MyPgsLite
     {
         static void Main(string[] args)
         {
-            DataInputService inputService = new DataInputService();
+            DataInputService dataInputService = new DataInputService();
+            UserManager userManager = new UserManager();
+            MainViewModel mainViewModel = new MainViewModel(dataInputService, userManager);
 
-            string test = inputService.GetName("Podaj imię");
-            decimal salary = inputService.GetSalary("Podaj wynagrodzenie");
+            mainViewModel.Run();
         }
     }
 }
