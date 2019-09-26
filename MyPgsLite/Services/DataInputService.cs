@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPgsLite.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyPgsLite.Services
 {
-    public class DataInputService
+    public class DataInputService : IDataInputService
     {
         public string GetName(string message)
         {

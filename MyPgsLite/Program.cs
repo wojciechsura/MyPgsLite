@@ -12,10 +12,11 @@ namespace MyPgsLite
     {
         static void Main(string[] args)
         {
+            Repository repository = new Repository();
             DataInputService dataInputService = new DataInputService();
-            UserManager userManager = new UserManager();
+            UserManager userManager = new UserManager(repository, dataInputService);
             MainViewModel mainViewModel = new MainViewModel(dataInputService, userManager);
-
+            
             mainViewModel.Run();
         }
     }

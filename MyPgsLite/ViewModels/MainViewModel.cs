@@ -1,4 +1,5 @@
 ﻿using MyPgsLite.Services;
+using MyPgsLite.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,17 @@ namespace MyPgsLite.ViewModels
 {
     public class MainViewModel
     {
-        private readonly DataInputService dataInputService;
-        private readonly UserManager userManager;
+        private readonly IDataInputService dataInputService;
+        private readonly IUserManager userManager;
 
         private void ListUsers()
         {
-            userManager.ListUsers();
+            userManager.ListEmployee();
         }
 
         private void AddUser()
         {
-            userManager.AddUser();
+            userManager.AddEmployee();
         }
 
         private int GetUserDecision()
@@ -45,7 +46,7 @@ namespace MyPgsLite.ViewModels
             return decision;
         }
 
-        public MainViewModel(DataInputService dataInputService, UserManager userManager)
+        public MainViewModel(IDataInputService dataInputService, IUserManager userManager)
         {
             this.dataInputService = dataInputService;
             this.userManager = userManager;

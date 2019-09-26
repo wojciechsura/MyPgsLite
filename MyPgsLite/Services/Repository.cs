@@ -1,4 +1,5 @@
 ﻿using MyPgsLite.Models;
+using MyPgsLite.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyPgsLite.Services
 {
-    public class Repository
+    public class Repository : IRepository
     {
         private List<Employee> employees;
 
@@ -15,13 +16,37 @@ namespace MyPgsLite.Services
         {
             employees = new List<Employee>();
         }
-
-        public List<Employee> Employees
+        
+        public void AddEmployee(Employee employee)
         {
-            get
+            int id = 0;
+            if (employees.Count > 0)
             {
-                return employees;
+                id = employees[0].Id;
+
+                for (int i = 1; i < employees.Count; i++)
+                {
+                    if (id < employees[i].Id)
+                    {
+                        id = employees[i].Id;
+                    }
+                }
             }
+
+            id++;
+            employee.Id = id;
+
+            employees.Add(employee);
+        }
+
+        public IEnumerable<Employee> ListEmployees()
+        {
+            return employees;
+        }
+
+        public void DeleteEmployee(Employee employee)
+        {
+            employees.Remove(employee);
         }
     }
 }
